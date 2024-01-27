@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsfonts} 
+\usepackage{xcolor}
+
+\title{PhD notes}
+\author{Mark Thomas}
+\date{January 2024}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Summary of variations of different terms possible in a Lagrangian}
+Making sure to recall the Hodge operator rule: $\lambda \wedge \omega = \omega \wedge * \lambda$. The first result is
+\begin{equation}
+    -\frac{1}{2}\delta\left(\mathrm{d}a_{e}\wedge *\mathrm{d}a_{e} \right) = \delta a_{e}\wedge \mathrm{d} * \mathrm{d}a_{e}- \mathrm{d}\left(\delta{a}_{e}\wedge * \mathrm{d}a_{e} \right)
+\end{equation}
+as derived in appendix \ref{appendixsourcefreemaxwell}. Next is the Abelian Chern-Simons term, which is derived in appendix \ref{appendixabelianchernsimonsvariation}, gives the result
+\begin{equation}
+    \delta\left(\frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e} \right) = 
+\end{equation}
+
+
+\section{The Abelian Maxwell Chern-Simons Lagrangian}
+The Lagrangian of this theory is 
+\begin{equation}
+    L_{\text{MCS}} = -\frac{1}{2g^{2}} \mathrm{d}a_{e}\wedge * \mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e},\quad a_{e}\in \mathfrak{u_{1}}
+\end{equation}
+This has the equation of motion (derived in appendix \ref{appendixamcseom}) of 
+\begin{equation}
+    \mathrm{d} * \mathrm{d} a_{e} + \frac{g^{2}k}{2\pi}\mathrm{d}a_{e}=0,
+\end{equation}
+meaning it has a mass $M = \frac{g^{2}k}{2\pi}$. This is Yang Mills where the source is from the Chern-Simons term. 
+
+
+
+
+
+
+\section{Non-Abelian master partition function for MCS and its dual}
+The theory is
+\begin{align}
+    \label{Eq: Master equation}
+    \mathcal{Z}_{\text{Master}}&= \int \mathcal{D}a_{m}\mathcal{D}a_{e}\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} \right.\right. + a_{m}\wedge \left(\mathrm{d}a_{e} + a_{e}\wedge a_{e} \right) \nonumber \\
+    &+ \left.\left.\frac{k}{4\pi}\left(a_{e}\wedge \mathrm{d}a_{e} + \frac{2}{3}a_{e}\wedge a_{e}\wedge a_{e} \right)\right)\right\}.
+\end{align}
+To get the electric theory (MCS), integrate over $a_{m}$ (see Appendix \ref{appendixmagneticintegration}) to get
+\begin{equation}
+    Z_{\text{Electric}} = \int \mathcal{D}a_{m}\exp i \text{tr}\left\{\int \text{stuff}\right\}.
+\end{equation}
+By substituting out the usual expression
+\begin{equation}
+    a_{e} = b - \left(\frac{2\pi}{k} \right)a_{m}, 
+\end{equation}
+get the (non-integrated) magnetic theory
+\begin{equation}
+    Z_{\text{Magnetic}} = \int \mathcal{D}a_{m}\exp i \text{tr}\left\{\int \text{stuff}\right\},
+\end{equation}
+which is derived in \ref{appendixelectricsubstitution}. Interested in seeing the relationship as to when $a_{m}$ and $b$ couple with each other. Perhaps also non-zero $b$ will change the apparent value of $k$ and so on. Can draw Feynman diagrams for the theory we get. Aim for now is to get things as tidied up as possible. Things can get really confusing as to understand what we're looking at we must understand strongly coupled gauge theories. 
+
+
+
+
+\section{Later bits}
+
+
+
+
+
+\appendix
+\section{Source free maxwell variation}
+\label{appendixsourcefreemaxwell}
+The variation can be calculated as
+\begin{align}
+    \delta\left(\mathrm{d}a_{e} \wedge * \mathrm{d}a_{e}\right) &= \mathrm{d}\left(\delta a_{e} \right)\wedge * \mathrm{d}a_{e} + \mathrm{d}a_{e}\wedge * \mathrm{d}\left(\delta a_{e} \right) \nonumber \color{blue}\quad \text{Product rule (over Lie algebra)} \color{black} \\
+    &= \mathrm{d}\left(\delta a_{e} \right)\wedge * \mathrm{d}a_{e} + \mathrm{d}\left(\delta a_{e} \right)\wedge *\mathrm{d}a_{e}\nonumber\color{blue}\quad \lambda\wedge * \omega  = \omega \wedge * \lambda\color{black}\\
+    &= 2\mathrm{d}\left(\delta a_{e}\right)\wedge * \mathrm{d}a_{e}\nonumber \\
+    &= 2\mathrm{d}\left(\delta a_{e}\wedge * \mathrm{d}a_{e} \right) - 2 \delta a_{e}\wedge \mathrm{d}*\mathrm{d}a_{e}\nonumber\quad \color{blue} \text{Product rule (over manifold)} \color{black},
+\end{align}
+so
+\begin{equation}
+    \boxed{
+    -\frac{1}{2}\delta\left(\mathrm{d}a_{e} \wedge * \mathrm{d}a_{e}\right) = \delta a_{e}\wedge \mathrm{d}*\mathrm{d}a_{e} - \mathrm{d}\left(\delta a_{e}\wedge *\mathrm{d}a_{e} \right)
+    }
+\end{equation}
+
+
+\section{Abelian Chern-Simons variation}
+\label{appendixabelianchernsimonsvariation}
+
+
+
+\section{Abelian Maxwell Chern-Simons equation of motion}
+\label{appendixamcseom}
+
+\section{Integrating the master theory to get the electric theory}
+\label{appendixmagneticintegration}
+Here is the integration of equation \eqref{Eq: Master equation}. 
+
+
+\section{Substitution in the master theory to get the magnetic theory}
+\label{appendixelectricsubstitution}
+Here is the integration of equation \eqref{Eq: Master equation}. 
+
+
+\section{Notes on differential geometry}
+For $p-$forms, write
+\begin{equation}
+    \omega = \frac{1}{p!}\omega_{\mu_{1}\ldots\mu_{p}}\omega_{\mu_{1}\ldots\mu_{p}}\mathrm{d}x^{\mu_{1}}\wedge \ldots\wedge\mathrm{d}x^{\mu_{p}},\quad \omega\in \Lambda^{p}\left(\mathcal{M}\right).
+\end{equation}
+
+\section{Notes on Lie-Algebra valued forms}
+Writing a Lie-algebra valued one-form as 
+\begin{equation}
+    A = A_{\mu}\mathrm{d}x^{\mu},
+\end{equation}
+it is the case that $A_{\mu}$ can decomposed as 
+\begin{equation}
+    A_{\mu} = A_{\mu}^{a}T^{a},
+\end{equation}
+because the value of $A_{\mu}$ is contained within the Lie-algebra. Note also $A_{\mu}^{a} = A_{\mu}^{a}(x)$, and $x\in \mathbb{R}^{n}$. So really,
+\begin{equation}
+    A = A_{\mu}^{a}(x)\, T^{a}\otimes \mathrm{d}x^{\mu},
+\end{equation}
+with $T^{a}$ elements of the Lie algebra defined at each point that $x$ is evaluated for. \newline
+
+\noindent Wedge products need to be taken care of. Can use the trick when traces are taken where the generators of the lie algebra get factorised away from the coefficients as 
+\begin{align}
+    \text{tr}\left(a\wedge b\wedge b \right)&= \text{tr}\left(a^{a}t^{a}\wedge b^{b}t^{b}\wedge b^{c}t^{c} \right)\nonumber \\
+    &= \text{tr}\left(t^{a}t^{b}t^{c} \right)\left(a^{a}\wedge b^{b}\wedge b^{c} \right)\nonumber\quad \text{\color{blue}(Factorising trick) \color{black}}\\
+    &= \text{tr}\left(t^{c}t^{a}t^{b} \right)a^{a}\wedge b^{b}\wedge b^{c} \nonumber\quad \text{\color{blue}(Trace cyclicity) \color{black}}\\
+    &= -\text{tr}\left(t^{c}t^{a}t^{b} \right)a^{a}\wedge b^{c}\wedge b^{b} \nonumber\quad \text{\color{blue}(Wedge product antisymmetry) \color{black}}\\
+    &= \text{tr}\left(t^{c}t^{a}t^{b} \right)b^{c}\wedge a^{a}\wedge b^{b} \nonumber\quad \text{\color{blue}(Wedge product antisymmetry) \color{black}}\\
+    &=\text{tr}\left(b^{c}t^{c}\wedge a^{a}t^{a}\wedge b^{b}t^{b} \right)\nonumber \\
+    &=  \text{tr}\left(b\wedge a\wedge b \right).
+\end{align}
+Using these, get a class of relations
+\begin{equation}
+    \text{tr}\left(a\wedge b\wedge c \right) =?= \text{tr}\left(c\wedge a \wedge b \right) etc. 
+\end{equation}
+
+
+\section{Dimensional reduction}
+To reduce from 4D coordinates in $\mathbb{R}^{4}$ coordinates to 3D, first constrain the fields $\mathbb{A}_{\mu}(x)$ to be defined on $\mathbb{R}^{3}\times I$, where $I$ is some interval. Now things parameterised by $x\in \mathbb{R}^{3}$ and $\sigma\in I$. Eventually see that a 4D vector reduces to a 3D vector plus one scalar. \newline 
+
+\noindent Take lowest mode as only it satisfies the boundary condition. This mode is either the vector or the scalar in our case. In 4D, $A_{\mu} \rightarrow A'_{\mu'} = \Lambda^{\mu}_{\,\mu '}A_{\mu}$. In 3D, we need a vector in a 3D subspace to remain in that 3D subspace under the transformations we are allowing. 
+
+
+
+
+
+
+\end{document}
