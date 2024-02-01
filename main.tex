@@ -3,7 +3,19 @@
 \usepackage{amsmath}
 \usepackage{amssymb}  
 \usepackage{amsfonts} 
-\usepackage{xcolor}
+\usepackage{xcolor}\usepackage{geometry} % Required for customizing page layout
+
+% Set custom page width
+\geometry{
+    a4paper, % or letterpaper (US)
+    left=2cm, % Adjust the left margin
+    right=2cm, % Adjust the right margin
+    top=2cm, % Adjust the top margin
+    bottom=2cm, % Adjust the bottom margin
+}
+
+
+
 
 \title{PhD notes}
 \author{Mark Thomas}
@@ -17,11 +29,13 @@
 \section{Summary of variations of different terms possible in a Lagrangian}
 Making sure to recall the Hodge operator rule: $\lambda \wedge \omega = \omega \wedge * \lambda$. The first result is
 \begin{equation}
+    \label{Eq: Maxwell term variation}
     -\frac{1}{2}\delta\left(\mathrm{d}a_{e}\wedge *\mathrm{d}a_{e} \right) = \delta a_{e}\wedge \mathrm{d} * \mathrm{d}a_{e}- \mathrm{d}\left(\delta{a}_{e}\wedge * \mathrm{d}a_{e} \right)
 \end{equation}
 as derived in appendix \ref{appendixsourcefreemaxwell}. Next is the Abelian Chern-Simons term, which is derived in appendix \ref{appendixabelianchernsimonsvariation}, gives the result
 \begin{equation}
-    \delta\left(\frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e} \right) = 
+    \label{Eq: Chern simons term variation}
+    \delta\left(\frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e} \right) = \frac{k}{2\pi}\delta a_{e}\wedge \mathrm{d}a_{e} + \frac{k}{4\pi}\mathrm{d}\left(a_{e}\wedge \delta a_{e}\right).
 \end{equation}
 
 
@@ -36,9 +50,30 @@ This has the equation of motion (derived in appendix \ref{appendixamcseom}) of
 \end{equation}
 meaning it has a mass $M = \frac{g^{2}k}{2\pi}$. This is Yang Mills where the source is from the Chern-Simons term. 
 
+\section{Some results on the path integrals of fields}
+Much like the integral
+\begin{equation}
+    \int e^{-\frac{1}{2}ax^{2}+bx}\mathrm{d}x = \sqrt{\frac{2\pi}{a}}e^{\frac{b^{2}}{2a}},
+\end{equation}
+by dropping the unnecessary factors out front, the path integral 
+\begin{equation}
+    \boxed{
+    \int_{\mathfrak{g}\times M}\mathcal{D}F\exp i \int_{M}\left(-\frac{g^{2}}{2}F\wedge * F + F\wedge \mathrm{d}A \right)\sim \exp i \int_{M}\left(-\frac{1}{2g^{2}}\mathrm{d}A\wedge *\mathrm{d}A\right).
+    }
+\end{equation}
+This is fleshed out fully in the appendix \ref{appendixfirstpathintegral}. Similarly, the integral
+\begin{equation}
+    \boxed{
+    \int \mathcal{D}F\mathcal{D}A\exp i \int_{M}\left(-\frac{g^{2}}{2}F\wedge * F + F\wedge \mathrm{d}A \right)\sim \int \mathcal{D}F\delta\left(\mathrm{d}F \right)\exp i \int_{M}\left(-\frac{g^{2}}{2}F\wedge * F \right).
+    }
+\end{equation}
 
-
-
+\section{Abelian master partition function}
+Consider the ``master'' partition function
+\begin{equation}
+    \mathcal{Z} = \int \mathcal{D}a_{m}\mathcal{D}a_{e}\,\exp i \int \left( -\frac{g^{2}}{2}a_{m}\wedge *a_{m} + a_{m}\wedge \mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e} \right),
+\end{equation}
+with $a_{m}$ a gauge invariant one-form. 
 
 
 \section{Non-Abelian master partition function for MCS and its dual}
@@ -72,6 +107,7 @@ which is derived in \ref{appendixelectricsubstitution}. Interested in seeing the
 
 
 \appendix
+\newpage
 \section{Source free maxwell variation}
 \label{appendixsourcefreemaxwell}
 The variation can be calculated as
@@ -91,11 +127,40 @@ so
 
 \section{Abelian Chern-Simons variation}
 \label{appendixabelianchernsimonsvariation}
-
+Calculating
+\begin{align}
+    \delta\left(\frac{k}{4\pi}A\wedge \mathrm{d} A \right) &= \frac{k}{4\pi}\delta\left(A\wedge \mathrm{d}A\right)\nonumber\\
+    &= \frac{k}{4\pi}\left[\delta A \wedge \mathrm{d}A + A\wedge \delta\left(\mathrm{d}A\right)\right]\color{blue}\text{ Product rule (Lie algebra)}\color{black}\nonumber\\
+    &= \frac{k}{4\pi}\left[\delta A \wedge \mathrm{d}A + \mathrm{d}\left(A\wedge \delta A\right)-\mathrm{d}A\wedge \delta A\right]\color{blue}\text{ Product rule (Manifold)}\color{black}\nonumber\\
+    &= \frac{k}{4\pi}\left[\mathrm{d}\left(A\wedge \delta A \right) + 2\delta A \wedge \mathrm{d}A\right] \color{blue}\text{ Wedge product antisymmetry}\color{black}.\nonumber 
+\end{align}
 
 
 \section{Abelian Maxwell Chern-Simons equation of motion}
 \label{appendixamcseom}
+Starting with the Action
+\begin{equation}
+    S_{\text{MCS}} = \int_{\mathcal{M}} \, -\frac{1}{2g^{2}} \mathrm{d}a_{e}\wedge * \mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e},\quad a_{e}\in \mathfrak{u_{1}},
+\end{equation}
+variation of the fields leaves
+\begin{align}
+    \delta S_{\text{MCS}} &= \delta \left(\int_{\mathcal{M}} \, -\frac{1}{2g^{2}} \mathrm{d}a_{e}\wedge * \mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e} \right)\nonumber \\
+    &= \int_{M}-\frac{1}{2g^{2}}\delta\left(\mathrm{d}a_{e}\wedge * \mathrm{d}a_{e}\right)+\frac{k}{4\pi}\delta\left(a_{e}\wedge \mathrm{d}a_{e}\right)\nonumber
+\end{align}
+Then by equations \eqref{Eq: Maxwell term variation} and \eqref{Eq: Chern simons term variation}, 
+\begin{align}
+    \delta S_{\text{MCS}} &=\int_{M} \frac{1}{g^{2}}\delta a_{e}\wedge\mathrm{d}* \mathrm{d}a_{e} - \frac{1}{g^{2}}\mathrm{d}\left(\delta a_{e}\wedge * \mathrm{d}a_{e}\right) + \frac{k}{2\pi}\delta a_{e}\wedge \mathrm{d}a_{e} + \frac{k}{4\pi}\mathrm{d}\left(a_{e}\wedge \delta a_{e} \right)\nonumber\\
+    &= \int_{M} \frac{1}{g^{2}}\delta a_{e}\wedge \mathrm{d}* \mathrm{d}a_{e} + \frac{k}{2\pi}\delta a_{e}\wedge \mathrm{d}a_{e} + \int_{\partial M}-\frac{1}{g^{2}}\delta a_{e}\wedge *\mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \delta a_{e}\nonumber\\
+    &= \int_{M}\delta a_{e}\wedge \left(\frac{1}{g^{2}}\mathrm{d}* \mathrm{d}a_{e} + \frac{k}{2\pi}\mathrm{d}a_{e}\ \right)-\int_{\partial M}\delta a_{e}\wedge \left(\frac{1}{g^{2}}*\mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\right)\nonumber.
+\end{align}
+Imposing $\delta S_{\text{MCS}} = 0$ for all $\delta a_{e}$ with $\delta a_{e}=0$ on $\partial M$ yields the equation of motion.
+\begin{equation}
+    \frac{1}{g^{2}}\mathrm{d}*\mathrm{d}a_{e} + \frac{k}{2\pi}\mathrm{d}a_{e}=0.
+\end{equation}
+
+
+\section{First path integral}
+\label{appendixfirstpathintegral}
 
 \section{Integrating the master theory to get the electric theory}
 \label{appendixmagneticintegration}
