@@ -4,6 +4,8 @@
 \usepackage{amssymb}  
 \usepackage{amsfonts} 
 \usepackage{xcolor}\usepackage{geometry} % Required for customizing page layout
+\usepackage{hyperref}
+ \usepackage{mdframed}
 
 % Set custom page width
 \geometry{
@@ -13,8 +15,6 @@
     top=2cm, % Adjust the top margin
     bottom=2cm, % Adjust the bottom margin
 }
-
-
 
 
 \title{PhD notes}
@@ -73,7 +73,15 @@ Consider the ``master'' partition function
 \begin{equation}
     \mathcal{Z} = \int \mathcal{D}a_{m}\mathcal{D}a_{e}\,\exp i \int \left( -\frac{g^{2}}{2}a_{m}\wedge *a_{m} + a_{m}\wedge \mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e} \right),
 \end{equation}
-with $a_{m}$ a gauge invariant one-form. 
+with $a_{m}$ a gauge invariant one-form. The Lagrangian for this is
+\begin{equation}
+    L =  -\frac{g^{2}}{2}a_{m}\wedge *a_{m} + a_{m}\wedge \mathrm{d}a_{e} + \frac{k}{4\pi}a_{e}\wedge \mathrm{d}a_{e}.
+\end{equation}
+This varies as
+\begin{equation}
+    \delta L = \delta a_{m}\wedge \left(g^{2}\mathrm{d}*\mathrm{d}a_{m} + \mathrm{d}a_{e}\right) + \delta a_{e}\wedge \left(\mathrm{d}a_{m} + \frac{k}{2\pi}\mathrm{d}a_{e}\right) + \mathrm{d}\left(g^{2}*\mathrm{d}a_{m}\wedge \delta a_{m} + \frac{k}{4\pi}a_{e}\wedge \delta a_{e}\right)
+\end{equation}
+upon the variation of both $a_{m}$ and $a_{e}$ independently. This is the result of varying the action \textit{before} any integration over the fields. 
 
 
 \section{Non-Abelian master partition function for MCS and its dual}
@@ -83,6 +91,17 @@ The theory is
     \mathcal{Z}_{\text{Master}}&= \int \mathcal{D}a_{m}\mathcal{D}a_{e}\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} \right.\right. + a_{m}\wedge \left(\mathrm{d}a_{e} + a_{e}\wedge a_{e} \right) \nonumber \\
     &+ \left.\left.\frac{k}{4\pi}\left(a_{e}\wedge \mathrm{d}a_{e} + \frac{2}{3}a_{e}\wedge a_{e}\wedge a_{e} \right)\right)\right\}.
 \end{align}
+The Lagrangian for this is
+\begin{equation}
+    L = -\frac{g^{2}}{2}a_{m}\wedge * a_{m}  + a_{m}\wedge \left(\mathrm{d}a_{e} + a_{e}\wedge a_{e} \right)+ \frac{k}{4\pi}\left(a_{e}\wedge \mathrm{d}a_{e} + \frac{2}{3}a_{e}\wedge a_{e}\wedge a_{e} \right).
+\end{equation}
+This varies to give
+\begin{equation}
+    Put the stuff here.
+\end{equation}
+
+
+
 To get the electric theory (MCS), integrate over $a_{m}$ (see Appendix \ref{appendixmagneticintegration}) to get
 \begin{equation}
     Z_{\text{Electric}} = \int \mathcal{D}a_{m}\exp i \text{tr}\left\{\int \text{stuff}\right\}.
@@ -171,7 +190,6 @@ Imposing $\delta S_{\text{MCS}} = 0$ for all $\delta a_{e}$ with $\delta a_{e}=0
     \frac{1}{g^{2}}\mathrm{d}*\mathrm{d}a_{e} + \frac{k}{2\pi}\mathrm{d}a_{e}=0.
 \end{equation}
 
-
 \section{First path integral}
 \label{appendixfirstpathintegral}
 \color{red}This bit needs some real attention. Want to show that 
@@ -242,11 +260,257 @@ And so
 \section{Dimensional reduction}
 To reduce from 4D coordinates in $\mathbb{R}^{4}$ coordinates to 3D, first constrain the fields $\mathbb{A}_{\mu}(x)$ to be defined on $\mathbb{R}^{3}\times I$, where $I$ is some interval. Now things parameterised by $x\in \mathbb{R}^{3}$ and $\sigma\in I$. Eventually see that a 4D vector reduces to a 3D vector plus one scalar. \newline 
 
-\noindent Take lowest mode as only it satisfies the boundary condition. This mode is either the vector or the scalar in our case. In 4D, $A_{\mu} \rightarrow A'_{\mu'} = \Lambda^{\mu}_{\,\mu '}A_{\mu}$. In 3D, we need a vector in a 3D subspace to remain in that 3D subspace under the transformations we are allowing. 
+\noindent Take lowest mode as only it satisfies the boundary condition. This mode is either the vector or the scalar in our case. In 4D, $A_{\mu} \rightarrow A'_{\mu'} = \Lambda^{\mu}_{\,\mu '}A_{\mu}$. In 3D, we need a vector in a 3D subspace to remain in that 3D subspace under the transformations we are allowing.\newline
 
 
+\noindent To move from $D$ dimensions to $d$ dimensions, we make the $D-d$ dimensions we wish to remove compact, and then require that in the limit that their size goes to zero, that the energy remains finite. \newline
 
+\noindent For example, for a scalar field, consider $\phi\left(x\right)$ with a compact dimensions with period $L$. Can write any field of this sort as
+\begin{equation}
+    \phi_{n}\left(x\right) = A_{n}\cos\left(\frac{2\pi n x}{L}\right).
+\end{equation}
+According to quantum mechanics, this has a momentum $\pm nh/L$ along the $x$ direction. Therefore, unless only the $n=0$ mode is non-zero as $L\rightarrow \infty$, then the momentum in this direction diverges. However, $\partial_{x}\phi_{0}=0$, and also $\partial_{x}\phi_{x}\neq 0$ for $n\neq 0$, and so removal of the $\phi$ dependence on $x$ gives the desired behaviour. We still require the fields we do things like this to to transform correctly under new subgroups of the symmetry groups we had before, however this will be discussed later. \newline
 
+\subsection{Dimensional reduction of electromagnetism}
+Following the work of the paper \href{https://arxiv.org/pdf/2111.10728.pdf}{Dimensional reduction of electromagnetism}, start with the Lagrangian of (3+1)-dimensional electromagnetism
+\begin{equation}
+    \mathcal{L}_{3+1}\left(A^{\mu}\right) = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu} - \frac{1}{c}j^{\mu}A_{\mu}.
+\end{equation}
+Here, the components of the field strength in Cartesian coordinates are
+\begin{equation}
+    \left(F_{\mu\nu}\right) = \begin{pmatrix}
+        0 & -E_x & -E_y & -E_z \\
+        E_x & 0 & -B_z & B_y \\
+        E_y & B_z & 0 & -B_x \\
+        E_z & -B_y & B_x & 0 \\
+    \end{pmatrix}, 
+\end{equation}
+and the corresponding components of the current are
+\begin{equation}
+    J^\mu = \begin{pmatrix}
+        c \rho \\
+        J_{x} \\
+        J_{y} \\
+        J_{z}
+    \end{pmatrix}.
+\end{equation}
+This gives the Lagrangian in terms of the electric and magnetic fields as
+\begin{equation}
+    \mathcal{L} = \frac{1}{2}\left(\vec{E}\cdot\vec{E} - \vec{B}\cdot\vec{B}\right)-\rho\phi + \frac{1}{c}\vec{J}\cdot\vec{A}.
+\end{equation}
+Note here can also define the dual field strength tensor
+\begin{equation}
+    *F^{\mu\nu} \equiv G^{\mu\nu} := \frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma},
+\end{equation}
+which in turn gives back the field strength tensor via
+\begin{equation}
+    F^{\mu\nu} = -\frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}G_{\rho\sigma}.
+\end{equation}
+This gives the components
+\begin{equation}
+    *\!F_{\mu\nu} = \begin{pmatrix}
+        0 & -B_x & -B_y & -B_z \\
+        B_x & 0 & E_z & -E_y \\
+        B_y & -E_z & 0 & E_x \\
+        B_z & E_y & -E_x & 0 \\
+    \end{pmatrix}.
+\end{equation}
+Note that these can be organised into blocks;
+\begin{equation}
+    F_{\mu\nu} = \begin{pmatrix}
+        \begin{array}{c|ccc}
+            0 & -E_x & -E_y & -E_z \\ \hline
+            E_x & 0 & -B_z & B_y \\
+            E_y & B_z & 0 & -B_x \\
+            E_z & -B_y & B_x & 0 \\
+        \end{array}
+    \end{pmatrix} = \begin{pmatrix}
+        \begin{array}{c|c}
+            & -\vec{E}^T \\ \hline
+            \vec{E} & \tilde{B}
+        \end{array}
+    \end{pmatrix},
+\end{equation}
+\begin{equation}
+    G_{\mu\nu} = \begin{pmatrix}
+        0 & -B_x & -B_y & -B_z \\
+        B_x & 0 & E_z & -E_y \\
+        B_y & -E_z & 0 & E_x \\
+        B_z & E_y & -E_x & 0 \\
+    \end{pmatrix} = \begin{pmatrix}
+        \begin{array}{c|c}
+            & -\vec{B}^T \\ \hline
+            \vec{B} & \tilde{E}
+        \end{array}
+    \end{pmatrix}
+\end{equation}
+and
+\begin{equation}
+    J^\mu = \begin{pmatrix}
+        c \rho \\
+        J_{x} \\
+        J_{y} \\
+        J_{z}
+    \end{pmatrix}= \begin{pmatrix}
+        c \rho \\
+        \hline
+        \\
+        \vec{J}\\
+        \\
+    \end{pmatrix}.
+\end{equation}
+We are interested in proper Lorentz transformations $SO^{+}\left(1,\,3\right)$. This is the set of all Lorentz transformations that can be connected to the identity by a continuous curve lying in the group. This is composed of proper rotations and boosts. 
+The set of all rotations forms a Lie subgroup isomorphic to the ordinary rotation group SO(3). These rotations leave $\vec{E}$ and $\vec{B}$ unmixed, and so their $3\oplus 3$ structure preserved. Similarly, $\rho$ and $\vec{J}$ are left unmixed by these transformations and so their $1\oplus 3$ block structure is preserved too. \newline
 
+\noindent The equations constraining electromagnetism can be derived from the Lagrangian and are as following: 
+\begin{align}
+    &\text{Dynamics: }\partial_{\mu}F^{\mu\nu} = \frac{1}{c}j^{\nu},\quad \partial_{\mu}G^{\mu\nu}=0,\\
+    &\text{Continuity: }\partial_{t}\rho + \partial_{x}J_{x} + \partial_{y}J_{y} + \partial_{z}J_{z}=0.
+\end{align}
+Breaking the field strength tensor and its dual into $\vec{E}$ and $\vec{B}$ gives the Maxwell equations in their familiar form
+\begin{align}
+    \text{div}\vec{B}&=0 \quad \text{(Gauss's law for magnetism),}\label{Gauss law magnetism}\\
+    \frac{1}{c}\partial_{t}\vec{B} + \text{curl}\vec{E} &= \vec{0}\quad \text{(Maxwell-Faraday law of induction),}\label{Maxwell Faraday law}\\
+    \text{div}\vec{E} &= \rho \quad \text{(Gauss's law),}\label{Gauss law}\\
+    -\frac{1}{c}\partial_{t}\vec{E} + \text{curl}\vec{B} &= \frac{1}{c}\vec{J}\quad\text{(Ampère's circuital law).\label{Ampere's law}}
+\end{align}
+Breaking these equations into Cartesian components gives the following set of equations. Firstly, \eqref{Gauss law magnetism} implies
+\begin{equation}
+    \partial_{x}B_{x}+\partial_{y}B_{y}+\partial_{z}B_{z}=0.
+\end{equation}
+Equation \eqref{Maxwell Faraday law} implies the three equations
+\begin{align}
+    \frac{1}{c}\partial_{t}B_{x}+\partial_{y}E_{z}-\partial_{z}E_{y}&=0,\\
+    \frac{1}{c}\partial_{t}B_{y}+\partial_{z}E_{x}-\partial_{x}E_{z}&=0,\\
+    \frac{1}{c}\partial_{t}B_{z}+\partial_{x}E_{y}-\partial_{y}E_{x}&=0.
+\end{align}
+Next, equation \eqref{Gauss law} implies
+\begin{equation}
+    \partial_{x}E_{x}+\partial_{y}E_{y}+\partial_{z}E_{z}=\rho.
+\end{equation}
+Finally, equation \eqref{Ampere's law} implies the three equations
+\begin{align}
+    -\frac{1}{c}\partial_{t}E_{x}+\partial_{y}B_{z}-\partial_{z}B_{y}&=\frac{1}{c}J_{x},\\
+    -\frac{1}{c}\partial_{t}E_{y}+\partial_{z}B_{x}-\partial_{x}B_{z}&=\frac{1}{c}J_{y},\\
+    -\frac{1}{c}\partial_{t}E_{z}+\partial_{x}B_{y}-\partial_{y}B_{x}&=\frac{1}{c}J_{z}.
+\end{align}
+Now, a \textit{descent} is performed along the $z$ direction. This is done by requiring the z-independence of both sources and solutions. This is achieved by letting $\partial_{z}\rightarrow 0$. The result is that the equations of motion decouple into two independent sets of four equations. These sets are:\newline
+\subsubsection*{1: The $\mathbf{\left(E_{x},\,E_{y},\,B_{z}\right),\,\left(\rho,\,J_{x},\,J_{y}\right)}$ sector}
+This sector is made of 4 differential equations and a reduced continuity equation:
+\begin{align}
+    \frac{1}{c}\partial_{t}B_{z}+\partial_{x}E_{y}-\partial_{y}E_{x}&=0,\\
+    \partial_{x}E_{x}+\partial_{y}E_{y}&=\rho,\\
+    -\frac{1}{c}\partial_{t}E_{x}+\partial_{y}B_{z}&=\frac{1}{c}J_{x},\\
+    -\frac{1}{c}\partial_{t}E_{y}-\partial_{x}B_{z}&=\frac{1}{c}J_{y},\\
+\end{align}
+and \begin{equation}
+    \partial_{t}\rho+\partial_{x}J_{x}+\partial_{y}J_{y}=0.
+\end{equation}
+
+\subsubsection*{2: The $\mathbf{\left(B_{x},\,B_{y},\,E_{z}\right),\,\left(J_{z}\right)}$ sector}
+This section is made of only 4 differential equations
+\begin{align}
+    \partial_{x}B_{x}+\partial_{y}B_{y}+\partial_{z}B_{z}&=0,\\
+    \frac{1}{c}\partial_{t}B_{x}+\partial_{y}E_{z}&=0,\\
+     \frac{1}{c}\partial_{t}B_{y}-\partial_{x}E_{z}&=0,\\
+     -\frac{1}{c}\partial_{t}E_{z}+\partial_{x}B_{y}-\partial_{y}B_{x}&=\frac{1}{c}J_{z}.
+\end{align}
+This partitioning can be highlighted in the field strength tensors
+\begin{equation}
+    F_{\mu\nu} = \begin{pmatrix}
+        \begin{array}{ccc|c}
+            0 & \color{blue}-E_x \color{black}& \color{blue}-E_y \color{black}& \color{red}-E_z\color{black} \\
+            \color{blue}E_x \color{black}& 0 & \color{blue}-B_z\color{black} & \color{red}B_y \color{black}\\
+            \color{blue}E_y \color{black}& \color{blue}B_z\color{black} & 0 & \color{red}-B_x\color{black} \\\hline
+            \color{red}E_z\color{black} & \color{red}-B_y\color{black} & \color{red}B_x\color{black} & 0 \\
+        \end{array}
+    \end{pmatrix},\quad
+    G_{\mu\nu} = \begin{pmatrix}
+        \begin{array}{ccc|c}
+            0 & \color{red}-B_x \color{black}& \color{red}-B_y \color{black}& \color{blue}-B_z\color{black} \\
+            \color{red}B_x \color{black}& 0 & \color{red}E_z\color{black} & \color{blue}-E_y \color{black}\\
+            \color{red}B_y \color{black}& \color{red}-E_z\color{black} & 0 & \color{blue}E_x\color{black} \\\hline
+            \color{blue}B_z\color{black} & \color{blue}E_y\color{black} & \color{blue}-E_x\color{black} & 0 \\
+        \end{array}
+    \end{pmatrix}, \quad
+    J^\mu = \begin{pmatrix}
+        \color{blue}c \rho \color{black}\\
+        \color{blue}J_{x}\color{black}\\
+        \color{blue}J_{y}\color{black}\\\hline
+        \color{red}J_{z}\color{black}\\
+    \end{pmatrix}.
+\end{equation}
+Note now that the elements of the first sector in $G$ can be obtained by performing the correct alternating sum over the elements of the first sector in F. This done in terms of reduced spacetime indices $a,\,b\in \left\{0,\,1,\,2\right\}$ as
+\begin{equation}
+    \color{red}G^{ab} = \frac{1}{2}\left(\varepsilon^{abc3}F_{c3} + \varepsilon^{ab3c}F_{3c}\right)\color{black},
+\end{equation}
+which reduces to 
+\begin{equation}
+    G^{ab} = \varepsilon^{abc}F_{c3}.
+\end{equation}
+Similarly, the second sector of $G$ can be obtained from the second sector in $F$ via
+\begin{equation}
+    \color{blue}G^{a3} = \frac{1}{2}\varepsilon^{a3bc}F_{bc}\color{black},
+\end{equation}
+which reduces to
+\begin{equation}
+    G^{a3} = \frac{1}{2}\varepsilon^{abc}F_{bc}.
+\end{equation}
+By recognising that the field strength tensors partition this way, the equations of motion for each sector can be written in tensor form. For the first (EEB) sector, these are
+\begin{equation}
+    \boxed{
+    \varepsilon^{abc}\partial_{a}F_{bc}=0,\,\quad \partial_{a}F^{ab} = \frac{1}{c}j^{b}
+    }
+\end{equation}
+Now in this sector, $F^{ab}$ is an antsymmetric (2+1) dimensional tensor, and its dual, $G^{a3}$ is a (2+1) dimensional vector. Also, $j^{a}$ is a (2+1) dimensional vector. This sector is considered the closer analog of 4D electromagnetism in 3D. \newline
+
+\noindent In the second (BBE) sector, the equations of motion in tensor form are
+\begin{equation}
+    \boxed{
+    \varepsilon^{abc}\partial_{b}F_{c3}=0,\,\quad \partial_{a}F^{a3}= \frac{1}{c}j^{3}.
+    }
+\end{equation}
+In this sector, $F^{a3}$ is a 3-component vector, and its dual $G^{ab}$ is a (2+1) dimensional antisymmetric tensor. Finally note that $j^{3}$ is a scalar.\newline
+
+\noindent Now that a partitioning of the field components into sectors has been made clear, it is important to check that these are not mixed due to the application of the desired (Lorentz) transformations. Since $z$-dependence has been removed from the physics, the subgroup of Lorentz transformations that leaves the z components of vectors preserved is now the set of transformations of interest. This subgroup is represented in Cartesian coordinates by the set of matrices with the block diagonal form
+\begin{equation}
+    \Lambda =  \begin{pmatrix}
+        \begin{array}{c|c}
+            L&\\ \hline
+             & Q
+        \end{array}
+    \end{pmatrix},
+\end{equation}
+where $L\in O\left(2,\,1\right)$ and $Q\in O\left(1\right)=\left\{+1,\,-1\right\}$. When $Q=+1$, this leaves the $z$-axis preserved, whereas $Q=-1$ inverts the $z$-axis. It can be checked that applications of these matrices leave the sectors unmixed. \newline
+
+\noindent The above means that under dimensional reduction, $F^{\mu\nu}$ has become the (2+1)-dimensional two-form $F^{ab}$ and the one form $F^{a3}$. Likewise, $A^{\mu}$ has become the 3D gauge field $A^{a}$ and the scalar $A^{3}$. This is a key initial result used in Adi's paper. \newline
+
+\noindent Additionally, the original Lagrangian $\mathcal{L}_{3+1}\left(A\right)$ can be written
+\begin{equation}
+    \mathcal{L}_{3+1}\left(A\right) = \left(-\frac{1}{4}F_{ab}F^{ab} - \frac{1}{c}j^{a}A_{a} \right) + \left(-\frac{1}{2}F_{a3}F^{a3} - \frac{1}{c}j^{3}A_{3}\right).
+\end{equation}
+Despite how things might look, this is not fully decoupled into $A^{a}$ and $A^{3}$ in the way the derivatives of $A$ are. First it is required that the gauge choice
+\begin{equation}
+    \partial_{3}A_{a}=0
+\end{equation}
+(which can always be made) be made. This choice leaves the residual gauge freedom
+\begin{equation}
+    A_{a}\rightarrow A_{a}+\partial_{a}f,\quad f=f\left(t,\,x,\,y\right). 
+\end{equation}
+Under this choice, the full Lagrangian can be written
+\begin{equation}
+    \mathcal{L}_{3+1}\left(A\right) = \mathcal{L}_{\text{EEB}}\left(A^{0},\,A^{1},\,A^{2}\right) + \mathcal{L}_{\text{BBE}}\left(A^{3}\right),
+\end{equation}
+where
+\begin{align}
+    \mathcal{L}_{\text{EEB}}\left(A^{0},\,A^{1},\,A^{2} \right) &= -\frac{1}{4}\left(\partial_{a}A_{b}-\partial_{b}A_{a}\right)\left(\partial^{a}A^{b} - \partial^{b}A^{a}\right) - \frac{1}{c}j^{a}A_{a}\\
+    &= \frac{1}{2}\left(E_{x}^{2}+E_{y}^{2}-B_{z}^{2}\right) - \rho\phi + \frac{1}{c}\left(J_{x}A_{x}+J_{y}A_{y}\right),
+\end{align}
+and 
+\begin{align}
+    \mathcal{L}_{BBE}\left(A^{3}\right) &= -\frac{1}{2}\left(\partial_{a}A_{3}\right)\left(\partial^{a}A^{3}\right) - \frac{1}{c}j^{3}A_{3}\\
+    &= \frac{1}{2}\left(E_{z}^{2} - B_{x}^{2}-B_{y}^{2}\right) + \frac{1}{c}J_{z}A_{z},
+\end{align}
+which is truly decoupled into two pieces, with a full gauge freedom in the non-compact directions remaining.
 
 \end{document}
