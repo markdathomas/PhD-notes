@@ -112,6 +112,7 @@ By substituting out the usual expression
 \end{equation}
 get the (non-integrated) magnetic theory
 \begin{align}
+    \label{Eq: Expanded magnetic}
     Z_{\text{Magnetic}} = \int \mathcal{D}a_{m}\mathcal{D}b \exp i \text{tr}\bigg\{\int &-\frac{g^{2}}{2}a_{m}\wedge *a_{m} - \frac{\pi}{k}a_{m}\wedge \mathrm{d}a_{m} + \frac{k}{4\pi}b\wedge \mathrm{d}b \nonumber\\
     &- \left(\frac{2\pi}{k}\right)a_{m}\wedge b \wedge a_{m}\nonumber\\
     &+ \frac{2}{3}\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge a_{m}\wedge a_{m}+ \frac{k}{6\pi}b\wedge b \wedge b\bigg\},
@@ -119,17 +120,31 @@ get the (non-integrated) magnetic theory
 which is derived in \ref{appendixelectricsubstitution}. Can organise this in various ways, for example
 \begin{equation}
     \boxed{
-    Z_{\text{M}} = \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}\bigg\{\int -\frac{g^{2}}{2}a_{m}\wedge *a_{m} - \frac{\pi}{k}a_{m}\wedge \left[\mathrm{d}a_{m}+2a_{m}\wedge \left(b - \frac{4\pi}{k}a_{m}\right)\right] + \frac{k}{4\pi}b\wedge \left(\mathrm{d}b + \frac{2}{3}b\wedge b\right)
+    Z_{\text{M}} = \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}\bigg\{\int -\frac{g^{2}}{2}a_{m}\wedge *a_{m} - \frac{\pi}{k}a_{m}\wedge \left[\mathrm{d}a_{m}+2a_{m}\wedge \left(b - \frac{4\pi}{3k}a_{m}\right)\right] + \frac{k}{4\pi}b\wedge \left(\mathrm{d}b + \frac{2}{3}b\wedge b\right),
     }
 \end{equation}
 Might be useful to compare this to the Abelian case, where
 \begin{equation}
     Z_{M}^{(A)} = \int \mathcal{D}a_{m}\mathcal{D}b \exp i \int \left\{-\frac{g^{2}}{2}a_{m}\wedge *a_{m} - \frac{\pi}{k}a_{m}\wedge \mathrm{d}a_{m} + \frac{k}{4\pi}b\wedge \mathrm{d}b\right\}.
 \end{equation}
-
 Interested in seeing the relationship as to when $a_{m}$ and $b$ couple with each other. Perhaps also non-zero $b$ will change the apparent value of $k$ and so on. Can draw Feynman diagrams for the theory we get. Aim for now is to get things as tidied up as possible. Things can get really confusing as to understand what we're looking at we must understand strongly coupled gauge theories. 
 
 
+
+\section{Checking the gauge invariance of $Z_{M}$}
+Under the gauge transformations, have that $a_{m}\rightarrow g a_{m} g^{\dagger}$ as it is not a gauge field, and $b\rightarrow gbg^{\dagger} + g\mathrm{d}g^{\dagger}$. Since we're considering $g\in \mathfrak{su}(N)$, have that $g^{\dagger} g = g g^{\dagger} = \mathbf{1}$, and also $\text{tr}\left(g\right)=0$.\newline
+
+
+\noindent Using the properties of $g$, the action in $Z_{M}$ is gauge invariant up to the level of the trace and total derivatives. This is easy to see for most terms in equation \eqref{Eq: Expanded magnetic}, with the exception of $a_{m}\wedge b \wedge a{m}$. Shown in appendix \ref{Sec: Behaviour of Z_{M} under gauge transformations} is that under the gauge transformation, 
+\begin{equation}
+    \label{Eq: AAB gauge change}
+    \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right)\rightarrow \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right) + \text{tr}\left(\mathrm{d}\left(a_{m}\wedge a_{m}\right)\cdot g\right).
+\end{equation}
+We can then use the Cauchy-Schwarz inequality for the trace which states
+\begin{equation}
+    0\leq \left[\text{tr}\mathbf{AB}\right]^{2}\leq \text{tr}\left(\mathbf{A}^{2}\right)\text{tr}\left(\mathbf{B}^{2}\right)\leq \left[\text{tr}\left(A\right)\right]^{2}\left[\text{tr}\left(B\right)\right]^{2},
+\end{equation}
+which implies that if $B$ is traceless, then $\text{tr}\left(\mathbf{AB}\right)=0$. So since $g$ is traceless, the second term in \eqref{Eq: AAB gauge change} is zero, and so $\text{tr}\left(a_{m}\wedge a_{m}\wedge b\right)\rightarrow \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right)$ under the gauge transformation.
 
 
 \section{Later bits}
@@ -207,8 +222,70 @@ Here is the integration of equation \eqref{Eq: Master equation}.
 
 \section{Substitution in the master theory to get the magnetic theory}
 \label{appendixelectricsubstitution}
-Substituting in $b$. 
-
+Substituting in $b$. The original partition fuction is
+\begin{align}
+    \mathcal{Z}_{\text{Master}}&= \int \mathcal{D}a_{m}\mathcal{D}a_{e}\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} \right.\right. + a_{m}\wedge \left(\mathrm{d}a_{e} + a_{e}\wedge a_{e} \right) \nonumber \\
+    &+ \left.\left.\frac{k}{4\pi}\left(a_{e}\wedge \mathrm{d}a_{e} + \frac{2}{3}a_{e}\wedge a_{e}\wedge a_{e} \right)\right)\right\}.
+\end{align}
+Now substituting in $a_{e} = b - \left(\frac{2\pi}{k}\right)a_{m}$, and noting that $\mathrm{d}a_{e} = \mathrm{d}b - \left(\frac{2\pi}{k}\right)\mathrm{d}a_{m}$, this leaves
+\begin{align}
+    \mathcal{Z}_{\text{Master}}= \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}&\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} \right.\right. \nonumber\\&+ a_{m}\wedge \left(\mathrm{d}\left(b - \left(\frac{2\pi}{k}\right)a_{m}\right) + \left(b - \left(\frac{2\pi}{k}\right)a_{m}\right)\wedge \left(b - \left(\frac{2\pi}{k}\right)a_{m}\right) \right) \nonumber \\
+    &+ \frac{k}{4\pi}\left(\left(b - \left(\frac{2\pi}{k}\right)a_{m}\right)\wedge \mathrm{d}\left(b - \left(\frac{2\pi}{k}\right)a_{m}\right)\right. \nonumber+\\& \left.\left.\left.\frac{2}{3}\left(b - \left(\frac{2\pi}{k}\right)a_{m}\right)\wedge \left(b - \left(\frac{2\pi}{k}\right)a_{m}\right)\wedge \left( b - \left(\frac{2\pi}{k}\right)a_{m}\right) \right)\right)\right\}.
+\end{align}
+This expands to
+\begin{align}
+    \mathcal{Z}_{\text{Master}}=& \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} \right.\right. \nonumber\\&+ a_{m}\wedge\mathrm{d}b - \left(\frac{2\pi}{k}\right)a_{m}\wedge \mathrm{d}a_{m} \nonumber \\
+    &+ a_{m}\wedge b\wedge b -\left(\frac{2\pi}{k}\right)a_{m}\wedge a_{m} \wedge b - \left(\frac{2\pi}{k}\right)a_{m}\wedge b\wedge a_{m}+\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge a_{m}\wedge a_{m} \nonumber \\
+    &+ \frac{k}{4\pi}b\wedge \mathrm{d}b-\frac{k}{4\pi}\left(\frac{2\pi}{k}\right)a_{m}\wedge \mathrm{d}b-\frac{k}{4\pi}\left(\frac{2\pi}{k}\right)b\wedge \mathrm{d}a_{m} + \frac{k}{4\pi}\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge \mathrm{d}a_{m}
+    \nonumber\\&+\frac{k}{4\pi}\frac{2}{3}b\wedge b\wedge b -\frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)b\wedge b \wedge a_{m} - \frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)b\wedge a_{m}\wedge b + \frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)^{2}b\wedge a_{m}\wedge a_{m} \nonumber \\
+    &-\frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)a_{m}\wedge b \wedge b + \frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge b\wedge a_{m} + \frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge a_{m}\wedge b -\nonumber\\
+    &\left.\left.\frac{k}{4\pi}\frac{2}{3}\left(\frac{2\pi}{k}\right)^{3}a_{m}\wedge a_{m}\wedge a_{m}\right)\right\}.
+\end{align}
+Grouping terms in the same direction, but before permuting any wedge products, this gives
+\begin{align}
+    \mathcal{Z}_{\text{Master}}=& \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} + a_{m}\wedge\mathrm{d}b\left(1-\frac{1}{2}\right)
+    \right.\right. \nonumber\\
+    &a_{m}\wedge \mathrm{d}a_{m}\left(- \left(\frac{2\pi}{k}\right)+ \frac{\pi}{k} \right)\nonumber \\
+    &+ a_{m}\wedge b\wedge b-\frac{1}{3}b\wedge b \wedge a_{m}- \frac{1}{3}b\wedge a_{m}\wedge b-\frac{1}{3}a_{m}\wedge b \wedge b\nonumber\\
+    &-\left(\frac{2\pi}{k}\right)a_{m}\wedge a_{m} \wedge b- \left(\frac{2\pi}{k}\right)a_{m}\wedge b\wedge a_{m}+ \frac{2\pi}{3k}b\wedge a_{m}\wedge a_{m}+ \frac{2\pi}{3k}a_{m}\wedge a_{m}\wedge b+ \frac{2\pi}{3k}a_{m}\wedge b\wedge a_{m} \nonumber \\
+    &\left.\left.  +\left[\frac{4\pi^{2}}{k^{2}} -\frac{4\pi^{2}}{3k^{2}}\right]a_{m}\wedge a_{m}\wedge a_{m}+ \frac{k}{4\pi}b\wedge \mathrm{d}b-\frac{1}{2}b\wedge \mathrm{d}a_{m} 
+    +\frac{k}{6\pi}b\wedge b\wedge b   \right)\right\}.
+\end{align}
+Using the result of equation \eqref{Eq: Trace result}, i.e., that
+\begin{equation}
+    \text{tr}\left(a\wedge b \wedge b\right) = \text{tr}\left(b\wedge a \wedge b\right) = \text{tr}
+    \left(b\wedge b \wedge a\right),
+\end{equation}
+the above then simplifies to 
+\begin{align}
+    \mathcal{Z}_{\text{Master}}=& \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} + \frac{1}{2}\left( a_{m}\wedge\mathrm{d}b-b\wedge \mathrm{d}a_{m}\right)-\frac{\pi}{k}a_{m}\wedge \mathrm{d}a_{m}
+    \right.\right. \nonumber\\
+    &+0 \times a_{m}\wedge b\wedge b-\frac{2\pi}{k}a_{m}\wedge b \wedge a_{m}\nonumber\\
+    & \left.\left. +\frac{2}{3}\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge a_{m}\wedge a_{m}+ \frac{k}{4\pi}b\wedge \mathrm{d}b
+    +\frac{k}{6\pi}b\wedge b\wedge b   \right)\right\}.
+\end{align}
+Now, a general result is that
+\begin{equation}
+    \mathrm{d}\left(\alpha\wedge \beta\right) = \left(\mathrm{d}\alpha\right)\wedge \beta + \left(-1\right)^{q}\wedge \left(\mathrm{d}\beta\right),\quad \alpha\in \Lambda^{q}\left(\mathcal{M}\right),\,\beta\in\Lambda^{r}\left(\mathcal{M}\right).
+\end{equation}
+So here, since $a_{m}$ and $b$ are both one-forms, the total derivative of their wedge product is
+\begin{align}
+    \mathrm{d}\left(a_{m}\wedge \mathrm{d}b\right) &= \left(\mathrm{d}a_{m}\right)\wedge b + \left(-1\right)^{1}a_{m}\wedge \mathrm{d}b\\
+    &= \left(\mathrm{d}a_{m}\right)\wedge b -a_{m}\wedge \mathrm{d}b,
+\end{align}
+meaning the second term in the above expression for $\mathcal{Z}_{\text{Master}}$ is a total derivative and so can be omitted from the action. Dropping also the $a_{m}\wedge b \wedge b$ term gives
+\begin{align}
+    \mathcal{Z}_{\text{Master}}=& \int \mathcal{D}a_{m}\mathcal{D}b\exp i \text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} -\frac{\pi}{k}a_{m}\wedge \mathrm{d}a_{m}-\frac{2\pi}{k}a_{m}\wedge b \wedge a_{m}
+    \right.\right. \nonumber\\
+    & \left.\left. +\frac{2}{3}\left(\frac{2\pi}{k}\right)^{2}a_{m}\wedge a_{m}\wedge a_{m}+ \frac{k}{4\pi}b\wedge \mathrm{d}b
+    +\frac{k}{6\pi}b\wedge b\wedge b   \right)\right\}.
+\end{align}
+The above is one way of expressing the new form of the partition function with all terms expanded. One way of combining these that looks somewhat more familiar is
+\begin{align}
+    \mathcal{Z}_{\text{Master}}= \int \mathcal{D}a_{m}\mathcal{D}b\exp i &\text{tr}\left\{\int \left(-\frac{g^{2}}{2}a_{m}\wedge * a_{m} -\frac{\pi}{k}a_{m}\wedge \left(\mathrm{d}a_{m}+2a_{m}\wedge \left(b-\frac{4\pi}{3k}a_{m}\right)
+    \right)\right.\right. \nonumber\\
+    & \left.\left. +\frac{k}{4\pi}\left(b\wedge \mathrm{d}b + \frac{2}{3}b\wedge b \wedge b\right) \right)\right\}.
+\end{align}
 
 \section{Notes on differential geometry}
 For $p-$forms, write
@@ -252,6 +329,7 @@ Similarly, find
 \end{align}
 And so
 \begin{equation}
+    \label{Eq: Trace result}
     \boxed{
     \text{tr}\left(a\wedge b \wedge b\right) = \text{tr}\left(b\wedge a \wedge b\right) = \text{tr}
     \left(b\wedge b \wedge a\right).
@@ -513,4 +591,48 @@ and
 \end{align}
 which is truly decoupled into two pieces, with a full gauge freedom in the non-compact directions remaining.
 
+
+
+\section{Behaviour of $Z_{M}$ under gauge transformations}
+\label{Sec: Behaviour of Z_{M} under gauge transformations}
+The term of most interest in the partition function \eqref{Eq: Expanded magnetic} is $\text{tr}\left(a_{m}\wedge a_{m}\wedge b\right)$. Before taking this on, note
+\begin{align}
+     0&= \mathrm{d}\left(\mathbf{1}\right)\\
+     &= \mathrm{d}\left(g\,g^{\ddagger}\right)\\
+    &= \mathrm{d}\left(g\right)g^{\dagger} + g\mathrm{d}\left(g^{\dagger}\right).
+\end{align}
+Knowing this, and performing the gauge transformation $a_{m}\rightarrow ga_{m}g^{\dagger}$, $b\rightarrow gbg^{\dagger} + g\mathrm{d}g^{\dagger}$, the term of interest transforms as
+\begin{align}
+    \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right) &\rightarrow \text{tr}\left(g a_{m} g^{\dagger}\wedge ga_{m}g^{\dagger}\wedge\left(gbg^{\dagger}+g\mathrm{d}g^{\dagger}\right)\right)\\
+    &=\text{tr}\left(ga_{m}g^{\dagger}\wedge ga_{m}g^{\dagger}\wedge gbg^{\dagger}\right) + \text{tr}\left(ga_{m}g^{\dagger}\wedge ga_{m}g^{\dagger}\wedge g\mathrm{d}g^{\dagger}\right)\\
+    &= \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right) +\text{tr}\left(ga_{m}\wedge a_{m}\wedge g\mathrm{d}g^{\dagger}\right)\\
+    &= \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right)-\text{tr}\left(ga_{m}\wedge a_{m}\wedge \left(\mathrm{d}g\right)g^{\dagger}\right)\\
+    &= \text{tr}\left(a_{m}\wedge a_{m}\wedge b\right)-\text{tr}\left(a_{m}\wedge a_{m}\wedge \mathrm{d}g\right)\\
+\end{align}
+So the variation in this term is
+\begin{equation}
+    \Delta\left(a_{m}\wedge a_{m}\wedge b\right) = \text{tr}\left(a_{m}\wedge a_{m}\wedge \mathrm{d}g \right)
+\end{equation}
+Using then that $a_{m}$ is a 1-form, consider the total derivative $\mathrm{d}\left(a_{m}\wedge a_{m}\wedge g\right)$. This expands as
+\begin{align}
+    \mathrm{d}\left(a_{m}\wedge \left(a_{m}\wedge g\right)\right)&= \mathrm{d}a_{m}\wedge \left(a_{m}\wedge g\right) - a_{m}\wedge\mathrm{d}\left(a_{m}\wedge g\right)\\
+    &=\mathrm{d}a_{m}\wedge \left(a_{m}\wedge g\right) - a_{m}\wedge \left(\mathrm{d}a_{m}\wedge g- a_{m}\wedge \mathrm{d}g\right)\\
+    &= \mathrm{d}a_{m}\wedge \left(a_{m}\wedge g\right) - a_{m}\wedge \left(\mathrm{d}a_{m}\wedge g\right) + a_{m}\wedge a_{m}\wedge\mathrm{d}g\\
+    &= \left(\mathrm{d}a_{m}\wedge a_{m}-a_{m}\wedge \mathrm{d}a_{m}\right)\wedge g + a_{m}\wedge a_{m}\wedge\mathrm{d}g\\
+    &= \mathrm{d}\left(a_{m}\wedge a_{m}\right)\wedge g+ a_{m}\wedge a_{m}\wedge\mathrm{d}g.
+\end{align}
+And so the variation of $a_{m}\wedge a_{m}\wedge b$ under the gauge transformation is
+\begin{align}
+    \Delta\left(a_{m}\wedge a_{m}\wedge b\right) &= \text{tr}\left(a_{m}\wedge a_{m}\wedge \mathrm{d}g \right)\\
+    &= \text{tr}\left(\mathrm{d}\left(a_{m}\wedge \left(a_{m}\wedge g\right)\right)\right) - \text{tr}\left(\mathrm{d}\left(a_{m}\wedge a_{m}\right)\wedge g\right).
+\end{align}
+Since total derivatives don't contribute to the action, this variation is then equivalent to
+\begin{equation}
+    \Delta\left(a_{m}\wedge a_{m}\wedge b\right) \equiv - \text{tr}\left(\mathrm{d}\left(a_{m}\wedge a_{m}\right)\wedge g\right)
+\end{equation}
+Since $g$ is a 0-form, this is then just
+\begin{equation}
+    \Delta\left(a_{m}\wedge a_{m}\wedge b\right) = - \text{tr}\left(\mathrm{d}\left(a_{m}\wedge a_{m}\right)\cdot g\right),
+\end{equation}
+where $\cdot$ denotes the (matrix) product of $\mathrm{d}\left(a_{m}\wedge a_{m}\right)$ and $g$. 
 \end{document}
